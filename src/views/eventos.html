@@ -1,0 +1,71 @@
+<div class="bw" ng-init="listarEventos()">   
+    <div class="fu">      
+            <div class="hc aps">
+                <div class="apa">
+                    <div class="apb">
+                        <h6 class="apd">Sitio de Eventos</h6>
+                        <h2 class="apc">Eventos</h2>                                        
+                    </div>
+                </div>                
+                <div id="mensaje"></div>
+                <div>
+                    <div style="width:35%;float:left;position:absolute">
+                        <select class="form-control" name="cmbRegion" id="cmbRegion" ng-model="cmbRegion" ng-change="limpiarSearch()" required>
+                            <option class="form-control" value="">Seleccionar Filtro</option>
+                            <option class="form-control" value="1">ID</option>
+                            <option class="form-control" value="2">FECHA</option>
+                            <option class="form-control" value="3">HORA</option>
+                        </select>
+                    </div>                    
+                    <div class="input-group" style="width:45%;float:right;position:relative">
+                        <input type="text" value="" ng-model="txtSearch" name="txtSearch" id="txtSearch" class="form-control">
+                        <span class="input-group-addon" style="cursor:pointer" onClick="alert('filtrar....');">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </span>
+                    </div>                    
+                </div>                
+                </br>                
+                <div class="anv alg ala">
+                  <h3 class="anw anx">Listado de Eventos</h3>
+                </div>                                            
+                <a href="#/frmContextoEvento" class="btn btn-primary">Agregar Nuevo Evento</a>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>FECHA</th>
+                                <th>HORA</th>
+                                <th>DIRECCION</th>
+                                <th>CANTIDAD PERSONAS</th>
+                                <th>ESTADO</th>
+                                <th>ACCIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="evento in eventos | orderBy: '-evento.FECHA_EVENTO'">  
+                                <td>{{evento.ID_EVENTO}}<input type="hidden" name="id_evento" id="id_evento" ng-model="evento.ID_EVENTO"></td>
+                                <td>{{evento.FECHA_EVENTO}}<input type="hidden" name="idR" id="idR" ng-model="evento.FECHA_EVENTO"></td>
+                                <td>{{evento.HORA_EVENTO}}<input type="hidden" name="idP" id="idP" ng-model="evento.HORA_EVENTO"></td>
+                                <td>{{evento.DIRECCION_EVENTO}}<input type="hidden" name="idC" id="idC" ng-model="evento.DIRECCION_EVENTO"></td>
+                                <td>{{evento.CANTIDAD_PERSONAS}}<input type="hidden" name="idC" id="idC" ng-model="evento.CANTIDAD_PERSONAS"></td>
+                                <td>{{estado[evento.ESTADO_EVENTO]}}</td>
+                                <td>                                 
+                                    <a style="cursor:pointer" ng-click="editarEvento(evento)" title="Editar Evento"><span class="glyphicon glyphicon-edit" style="padding-left:10px; padding-right:10px"></span></a>
+                                    <a style="cursor:pointer" title="dar de baja Evento"><span class="glyphicon glyphicon-remove" style="padding-left:10px; padding-right:10px"></span></a>                                	
+                            	</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="cant_reg" class="pull-right"></div>                    
+                   	<div id="response-container"></div> 
+                </div>
+            </div>
+        </div>    
+        <hr class="featurette-divider">        
+        <footer>
+            <span style="font-size:12px">&copy; 2016<span>
+            <br>
+        </footer>
+	</div>    
+</div>
